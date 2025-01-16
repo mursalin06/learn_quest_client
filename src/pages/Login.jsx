@@ -36,7 +36,7 @@ const Login = () => {
                         <p className="hover:underline">
                             <Link to='/register'>
                                 Don't have an account ?
-                                <span className="text-[#008080] underline font-bold pl-1">Register</span></Link>
+                                <span className="text-[#825afa] underline font-bold pl-1">Register</span></Link>
                         </p>
                         <div className="form-control mt-6">
                             <button className="btn bg-[#D6C9FF] rounded-full">Sign In</button>

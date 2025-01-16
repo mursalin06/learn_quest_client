@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from '../../public/favicon.png'
 
 const Navbar = () => {
 
@@ -42,7 +43,10 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to='/' className="text-md md:text-xl font-bold text-[#333333]"><span className="text-[#008080] md:text-2xl">L</span>earn<span className="text-[#008080] md:text-2xl">Q</span>uest</Link>
+                <Link to='/' className="text-md md:text-xl font-bold text-[#333333] flex items-center">
+                    <img className="w-12 h-12 " src={logo} alt="" />
+                    <span className="text-[#825afa] md:text-2xl">L</span>earn<span className="text-[#825afa] md:text-2xl">Q</span>uest
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -53,7 +57,7 @@ const Navbar = () => {
                 {user ? (
                     <div className="dropdown dropdown-end flex justify-center items-center gap-3 z-10">
 
-                        <div className="border-2 border-[#008080] rounded-full">
+                        <div className="border-2 border-[#825afa] rounded-full">
                             <label
                                 tabIndex={0}
                                 className="flex items-center gap-2 cursor-pointer"
@@ -84,7 +88,7 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div>
-                        <Link to="/signIn" className="btn ml-3 bg-[#008080] text-white btn-sm px-6">
+                        <Link to="/signIn" className="btn ml-3 bg-[#825afa] text-white btn-sm px-6">
                             Sign In
                         </Link>
                     </div>
