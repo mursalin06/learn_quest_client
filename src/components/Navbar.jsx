@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../public/favicon.png'
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
+    const {name} = useContext(AuthContext)
 
     const user = false;
     const links = (
