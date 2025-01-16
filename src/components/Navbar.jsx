@@ -84,8 +84,8 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div>
-                        <Link to="/login" className="btn ml-3 bg-[#008080] text-white btn-sm px-6">
-                            Login
+                        <Link to="/signIn" className="btn ml-3 bg-[#008080] text-white btn-sm px-6">
+                            Sign In
                         </Link>
                     </div>
                 )}

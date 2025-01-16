@@ -8,9 +8,8 @@ const Login = () => {
 
         const email = form.email.value;
         const password = form.password.value;
-        // const LoginInfo = { email, password }
+        const LoginInfo = { email, password }
         // console.log(LoginInfo);
-
     }
     return (
         <section>
@@ -34,7 +33,11 @@ const Login = () => {
                             </label>
                             <input type="password" placeholder="password" name="password" className="input rounded-full input-bordered" required />
                         </div>
-                        <p>Don't have an account ? <Link to='/register'><span className="text-[#008080] underline font-bold">Register</span></Link></p>
+                        <p className="hover:underline">
+                            <Link to='/register'>
+                                Don't have an account ?
+                                <span className="text-[#008080] underline font-bold pl-1">Register</span></Link>
+                        </p>
                         <div className="form-control mt-6">
                             <button className="btn bg-[#D6C9FF] rounded-full">Sign In</button>
                         </div>
