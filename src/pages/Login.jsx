@@ -1,20 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useForm } from "react-hook-form";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
-    const { register, handleSubmit } = useForm()
+    const { login } = useContext(AuthContext);
+    const { register, handleSubmit, reset } = useForm();
+
+    const navigate = useNavigate();
+
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
+        login(data.email, data.password)
+        .then((res)=>{
+            // console.log("Logged in successfully!");
+            Swal.fire({
+                title: "Congrats!",
+                text: "You're Signed In",
+                icon: "success"
+            });
+            reset();
+            navigate('/');
+        })
+        .catch((err)=>{
+            console.error(err,"Error occurred while logging in ... ");
+            Swal.fire({
+                title: "Ohh Crap!",
+                text: "Failed to Sign in",
+                icon: "error"
+            });
+        })
     }
     return (
         <section>
             <nav>
                 <Navbar></Navbar>
             </nav>
-            {/*  */}
             <div className="hero bg-base-200 min-h-screen">
                 <div className="card bg-base-100 w-full mx-5 md:w-1/3 shadow-2xl">
                     <h2 className="text-2xl font-bold text-center pt-6">Sign In</h2>

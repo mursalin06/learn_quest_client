@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../src/assets/favicon.png'
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import { FaUser } from "react-icons/fa6";
 
 const Navbar = () => {
 
@@ -78,7 +79,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
                             >
-                                <p aria-readonly className="text-sm">{user?.displayName}</p>
+                                <p aria-readonly className="font-medium flex items-center gap-2"><FaUser></FaUser>{user?.displayName}</p>
                                 <NavLink to="/dashboard" className="nav-link">
                                     <li>Dashboard</li>
                                 </NavLink>
