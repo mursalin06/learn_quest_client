@@ -5,9 +5,10 @@ import Footer from "../components/Footer";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
-    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile, user } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
@@ -22,7 +23,18 @@ const Register = () => {
                             photoURL: registrationData.photoUrl,
                         };
                         setUser(updatedUser);
-                        // console.log("Profile updated:", updatedUser);
+                        // necessary data to store in the DB
+                        const storedUserData = {
+                            name: updatedUser.displayName,
+                            email: updatedUser.email,
+                            role: "student",
+                            photoURL: updatedUser.photoURL,
+                            createdAt: new Date(parseInt(updatedUser.reloadUserInfo.createdAt)).toLocaleString(),
+                            lastLoginAt: new Date(parseInt(updatedUser.reloadUserInfo.lastLoginAt)).toLocaleString(),
+
+                        }
+                        axios.post('http://localhost:5000/users', storedUserData);
+
                         Swal.fire({
                             title: "Congrats!",
                             text: "Registration Successful!",
