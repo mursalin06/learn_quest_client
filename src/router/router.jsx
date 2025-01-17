@@ -6,12 +6,15 @@ import Banner from "../home/banner/Banner";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AllClasses from "../pages/AllClasses";
-import Dashboard from "../pages/protectedPages/Dashboard";
 import TeachOnLearnQuest from "../pages/protectedPages/TeachOnLearnQuest";
 import Partners from "../home/partners/Partners";
 import RecruitInstructor from "../pages/RecruitInstructor";
 import ContactUs from "../pages/ContactUs";
 import Newsletter from "../components/Newsletter";
+import Dashboard from "../layouts/Dashboard";
+import AddClass from "../pages/protectedPages/AddClass";
+import MyClass from "../pages/protectedPages/MyClass";
+import Profile from "../pages/protectedPages/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +52,20 @@ export const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<Dashboard></Dashboard>
+        element:<Dashboard></Dashboard>,
+        children:[
+            {
+                path:'/dashboard/add-class',
+                element:<AddClass></AddClass>
+            },
+            {
+                path:'/dashboard/my-class',
+                element:<MyClass></MyClass>
+            },
+            {
+                path:'/dashboard/profile',
+                element:<Profile></Profile>
+            }
+        ]
     }
 ]);

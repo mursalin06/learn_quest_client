@@ -8,10 +8,10 @@ const Newsletter = () => {
                 <p>Your Weekly Dose of LearnQuest Insights</p>
                 <div className='md:hidden'>
                     <input type="email" placeholder='enter your email' className='input input-bordered' />
-                    <br />
                     <button className='btn bg-[#825afa] mt-1 text-white'>Subscribe</button>
                 </div>
-                <div className="join hidden md:block">
+                <div className='hidden md:block'>
+                <div className="join">
                     <div>
                         <div>
                             <input className="input input-bordered join-item" placeholder="Enter your Email" />
@@ -20,6 +20,7 @@ const Newsletter = () => {
                     <div className="indicator">
                         <button className="btn bg-[#825afa] text-white join-item">Subscribe</button>
                     </div>
+                </div>
                 </div>
             </div>
         </section>

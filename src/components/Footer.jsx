@@ -14,7 +14,7 @@ const Footer = () => {
                             The Learn Quest
                         </span>
                         <br />
-                        Embark on a Journey of Knowledge !
+                        Embark on a Journey of Knowledge!
                     </p>
                     <p className="flex gap-3 items-center"><FaLocationDot></FaLocationDot> <span>Level-4, 34, Awal Centre, Banani, Dhaka</span></p>
                     <p className="flex gap-3 items-center"><FiPhoneCall></FiPhoneCall> <span>01322810867 , 01332502004</span></p>

@@ -7,6 +7,8 @@ import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+// TODO: REGEX
+
 const Register = () => {
     const { createUser, setUser, updateUserProfile, user } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
