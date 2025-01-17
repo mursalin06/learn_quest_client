@@ -6,20 +6,30 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
 const Register = () => {
-    const {createUser, setUser} = useContext(AuthContext);
+    const { createUser, setUser, user, updateUserProfile } = useContext(AuthContext);
 
     const { register, handleSubmit } = useForm()
     const onSubmit = (registrationData) => {
-        console.log(registrationData);
         createUser(registrationData.email, registrationData.password)
-        .then((result)=>{
-            console.log(result);
-            setUser(result.user);
-        })
-        .catch((error)=>{
-            console.error("ERROR while creating a user", error);
-        })
-    }
+            .then((result) => {
+                updateUserProfile(registrationData.name, registrationData.photoUrl)
+                    .then(() => {
+                        const updatedUser = {
+                            ...result.user,
+                            displayName: registrationData.name,
+                            photoURL: registrationData.photoUrl,
+                        };
+                        setUser(updatedUser);
+                        console.log("Profile updated:", updatedUser);
+                    })
+                    .catch((error) => {
+                        console.error("An error occurred while updating user profile:", error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error while creating a user:", error);
+            });
+    };
     return (
         <div>
             <nav>
@@ -37,10 +47,9 @@ const Register = () => {
                                     <span className="label-text">Enter your name</span>
                                 </label>
                                 <input
-                                    {...register("name")}
+                                    {...register("name", { required: true })}
                                     type="text"
                                     placeholder="name"
-                                    name="name"
                                     className="input input-bordered rounded-full"
                                     required
                                 />
@@ -51,10 +60,9 @@ const Register = () => {
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input
-                                    {...register("email")}
+                                    {...register("email", { required: true })}
                                     type="email"
                                     placeholder="email"
-                                    name="email"
                                     className="input rounded-full input-bordered"
                                     required
                                 />
@@ -65,10 +73,9 @@ const Register = () => {
                                     <span className="label-text">Photo URL</span>
                                 </label>
                                 <input
-                                    {...register("photoUrl")}
+                                    {...register("photoUrl", { required: true })}
                                     type="text"
                                     placeholder="photo url"
-                                    name="photo"
                                     className="input rounded-full input-bordered"
                                     required
                                 />
@@ -79,10 +86,9 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input
-                                    {...register("password")}
+                                    {...register("password", { required: true })}
                                     type="password"
                                     placeholder="password"
-                                    name="password"
                                     className="input rounded-full input-bordered"
                                     required
                                 />
