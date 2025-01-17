@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import AllClasses from "../pages/AllClasses";
 import Dashboard from "../pages/protectedPages/Dashboard";
 import TeachOnLearnQuest from "../pages/protectedPages/TeachOnLearnQuest";
+import Partners from "../home/partners/Partners";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,10 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Banner></Banner>
+                element: <>
+                <Banner></Banner>
+                <Partners></Partners>
+                </>  
             }
         ]
     },
