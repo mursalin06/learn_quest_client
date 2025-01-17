@@ -1,9 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../src/assets/favicon.png'
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
 
-    const user = false;
+    const { user } = useContext(AuthContext);
+    console.log(user)
+
     const links = (
         <>
             <NavLink to="/" className="nav-link px-4 py-2">
@@ -74,7 +78,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
                             >
-                                <p aria-readonly className="text-sm">{user?.displayName || user?.name} Name</p>
+                                <p aria-readonly className="text-sm">{user?.displayName}</p>
                                 <NavLink to="/dashboard" className="nav-link">
                                     <li>Dashboard</li>
                                 </NavLink>

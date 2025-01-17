@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useForm } from "react-hook-form";
 import Footer from "../components/Footer";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
-    const { createUser, setUser, user, updateUserProfile } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const { register, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
 
-    const { register, handleSubmit } = useForm()
     const onSubmit = (registrationData) => {
         createUser(registrationData.email, registrationData.password)
             .then((result) => {
@@ -20,10 +22,22 @@ const Register = () => {
                             photoURL: registrationData.photoUrl,
                         };
                         setUser(updatedUser);
-                        console.log("Profile updated:", updatedUser);
+                        // console.log("Profile updated:", updatedUser);
+                        Swal.fire({
+                            title: "Congrats!",
+                            text: "Registration Successful!",
+                            icon: "success"
+                        });
+                        reset();
+                        navigate('/');
                     })
                     .catch((error) => {
                         console.error("An error occurred while updating user profile:", error);
+                        Swal.fire({
+                            title: "OPPS!",
+                            text: "Registration Unsuccessful!",
+                            icon: "error"
+                        });
                     });
             })
             .catch((error) => {
