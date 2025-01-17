@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useForm } from "react-hook-form";
+import Footer from "../components/Footer";
 
 const Login = () => {
 
@@ -49,6 +50,9 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </section>
     );
 };

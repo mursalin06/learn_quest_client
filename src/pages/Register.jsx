@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useForm } from "react-hook-form";
+import Footer from "../components/Footer";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Register = () => {
-    // const handleRegister = (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
+    const {createUser, setUser} = useContext(AuthContext);
 
-    //     const name = form.name.value;
-    //     const photoURL = form.photo.value;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     const userInfo = { name, photoURL, email, password };
-    // }
     const { register, handleSubmit } = useForm()
     const onSubmit = (registrationData) => {
-        console.log(registrationData)
+        console.log(registrationData);
+        createUser(registrationData.email, registrationData.password)
+        .then((result)=>{
+            console.log(result);
+            setUser(result.user);
+        })
+        .catch((error)=>{
+            console.error("ERROR while creating a user", error);
+        })
     }
     return (
         <div>
@@ -99,6 +102,9 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </div>
     );
 };

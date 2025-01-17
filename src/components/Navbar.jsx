@@ -1,22 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../src/assets/favicon.png'
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
-    const {name} = useContext(AuthContext)
 
     const user = false;
     const links = (
         <>
-            <NavLink to="/" className="nav-link">
-                <li>Home</li>
+            <NavLink to="/" className="nav-link px-4 py-2">
+                Home
             </NavLink>
-            <NavLink to="/all-classes" className="nav-link">
-                <li>All Classes</li>
+            <NavLink to="/all-classes" className="nav-link px-4 py-2">
+                All Classes
             </NavLink>
-            <NavLink to="/teach-on-lq" className="nav-link">
-                <li>Teach on LearnQuest</li>
+            <NavLink to="/teach-on-lq" className="nav-link px-4 py-2">
+                Teach on LearnQuest
             </NavLink>
         </>
     );
