@@ -14,9 +14,9 @@ const ContactUs = () => {
                     backgroundSize: "cover",
                 }}>
                 <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center">
+                <div className="hero-content text-center flex flex-col md:flex-row">
                     <div className="bg-[#f5ebd3] flex rounded-lg flex-col justify-between">
-                        <div className="pr-32 pl-5 py-5 text-left">
+                        <div className="md:pr-32 pl-5 py-5 text-left">
                             <h1 className="mb-5 text-4xl font-bold">Call now for any need!</h1>
                             <p className="mb-5">
                                 For Learn Quest's courses, your studies, promo codes, or any inquiries—give us a call.
@@ -26,7 +26,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-between items-center space-y-2">
-                        <div className="bg-[#ffcdcc] text-black h-[120px] w-[500px] px-5 flex justify-between items-center  rounded-lg">
+                        <div className="bg-[#ffcdcc] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  rounded-lg">
                             <div className="justify-start text-left">
                                 <p className="text-xl font-bold">Free Video Library</p>
                                 <button className="btn bg-[#ffedf9] text-red-400">Watch Video</button>
@@ -37,7 +37,7 @@ const ContactUs = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="bg-[#c9e1ff] text-black h-[120px] w-[500px] px-5 flex justify-between items-center  rounded-lg">
+                        <div className="bg-[#c9e1ff] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  rounded-lg">
                             <div className="justify-start text-left">
                                 <p className="text-xl font-bold">Learn Quest Facebook Group</p>
                                 <button className="btn text-blue-400 bg-[#ffedf9]">Join our Group</button>
