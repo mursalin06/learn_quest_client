@@ -11,6 +11,7 @@ import TeachOnLearnQuest from "../pages/protectedPages/TeachOnLearnQuest";
 import Partners from "../home/partners/Partners";
 import RecruitInstructor from "../pages/RecruitInstructor";
 import ContactUs from "../pages/ContactUs";
+import Newsletter from "../components/Newsletter";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
                 <Partners></Partners>
                 <RecruitInstructor></RecruitInstructor>
                 <ContactUs></ContactUs>
+                <Newsletter></Newsletter>
                 </>  
             }
         ]

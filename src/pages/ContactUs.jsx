@@ -1,4 +1,4 @@
-import { FaFacebook, FaPhone, FaYoutube } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa6";
 
 const ContactUs = () => {
     return (
