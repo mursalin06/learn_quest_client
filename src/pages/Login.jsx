@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
 
-        const email = form.email.value;
-        const password = form.password.value;
-        const LoginInfo = { email, password }
-        // console.log(LoginInfo);
+    const { register, handleSubmit } = useForm()
+    const onSubmit = (data) => {
+        console.log(data)
     }
     return (
         <section>
@@ -20,18 +17,20 @@ const Login = () => {
             <div className="hero bg-base-200 min-h-screen">
                 <div className="card bg-base-100 w-full mx-5 md:w-1/3 shadow-2xl">
                     <h2 className="text-2xl font-bold text-center pt-6">Sign In</h2>
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" name="email" className="input input-bordered rounded-full" required />
+                            <input type="email" {...register("email")} placeholder="email" name="email" className="input input-bordered rounded-full" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" name="password" className="input rounded-full input-bordered" required />
+                            <input type="password" {...register("password")} placeholder="password" name="password" className="input rounded-full input-bordered" required />
                         </div>
                         <p className="hover:underline">
                             <Link to='/register'>

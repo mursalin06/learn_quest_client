@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FiPhoneCall } from 'react-icons/fi';
-import logo from '../../public/favicon.png'
+import logo from '../assets/favicon.png'
 
 const Footer = () => {
     return (
