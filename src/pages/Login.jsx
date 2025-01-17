@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
 
@@ -47,6 +48,24 @@ const Login = () => {
                 });
                 console.log(result.user);
                 navigate('/');
+                const storedUserData = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    role: "student",
+                    photoURL: result.user.photoURL,
+                    createdAt: new Date(parseInt(result.user.reloadUserInfo.createdAt)).toLocaleString(),
+                    lastLoginAt: new Date(parseInt(result.user.reloadUserInfo.lastLoginAt)).toLocaleString(),
+
+                }
+                axios.post('http://localhost:5000/users', storedUserData);
+            })
+            .catch((err)=>{
+                console.error(err, "error while logging in with google");
+                Swal.fire({
+                    title: "OPPS!",
+                    text: "Sign In Unsuccessful!",
+                    icon: "error"
+                });
             })
     }
 
