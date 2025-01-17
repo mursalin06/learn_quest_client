@@ -3,10 +3,11 @@ import logo from '../../src/assets/favicon.png'
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { FaUser } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user,logOut } = useContext(AuthContext);
     console.log(user)
 
     const links = (
@@ -22,6 +23,26 @@ const Navbar = () => {
             </NavLink>
         </>
     );
+
+    // log-out
+    const handleSignOut = () => {
+        logOut()
+        .then(()=>{
+            Swal.fire({
+                title: "Congrats!",
+                text: "Logged out successfully!",
+                icon: "success"
+            });
+        })
+        .catch((err)=>{
+            console.log(err);
+            Swal.fire({
+                title: "Ohh Crap!",
+                text: "Failed to Log Out",
+                icon: "error"
+            });
+        })
+    }
 
 
     return (
@@ -84,7 +105,7 @@ const Navbar = () => {
                                     <li>Dashboard</li>
                                 </NavLink>
                                 <div>
-                                    <button className=" btn btn-error btn-sm text-white">Log Out</button>
+                                    <button onClick={handleSignOut} className=" btn btn-error btn-sm text-white">Log Out</button>
                                 </div>
                             </ul>
                         </div>
