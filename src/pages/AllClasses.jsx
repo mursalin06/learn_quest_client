@@ -1,7 +1,9 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import useAllClasses from "../hooks/useAllClasses";
 
 const AllClasses = () => {
+    const [allClassData] = useAllClasses();
     return (
         <div>
             <nav>
@@ -9,7 +11,7 @@ const AllClasses = () => {
             </nav>
             {/*  */}
            <section className="min-h-screen bg-[#F8F9FA]">
-           ALL CLASSES (PRIVATE)
+           {allClassData.length}
            </section>
            {/*  */}
            <footer>

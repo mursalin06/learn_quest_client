@@ -57,7 +57,7 @@ const Login = () => {
                     lastLoginAt: new Date(parseInt(result.user.reloadUserInfo.lastLoginAt)).toLocaleString(),
 
                 }
-                axios.post('http://localhost:5000/users', storedUserData);
+                axios.post('/users', storedUserData);
             })
             .catch((err)=>{
                 console.error(err, "error while logging in with google");

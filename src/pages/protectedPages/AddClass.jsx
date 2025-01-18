@@ -4,12 +4,14 @@ import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AddClass = () => {
     const navigate = useNavigate();
     const { user, setLoading, loading } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const [file, setFile] = useState(null);
+    const axiosPublic = useAxiosPublic();
 
     const handleFileChange = async (e) => {
         setFile(e.target.files[0]);
@@ -36,7 +38,7 @@ const AddClass = () => {
                 status: "pending"
             }
             console.log(newClassData);
-            axios.post('http://localhost:5000/classes', newClassData);
+            axiosPublic.post('/classes', newClassData);
             Swal.fire({
                 title: "Congrats!",
                 text: "Class added Successfully!",
@@ -49,8 +51,16 @@ const AddClass = () => {
                 navigate('/dashboard/my-class')
             }
         } catch (err) {
-            console.log(err)
+            console.log(err);
+            Swal.fire({
+                title: "Error!",
+                text: "Failed to add the class, Please try again!",
+                icon: "error"
+            });
         }
+        // finally {
+        //     setLoading(false);
+        // }
     }
 
 

@@ -6,12 +6,14 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 // TODO: REGEX, LOADING SPINNER, ERROR ELEMENT
 
 const Register = () => {
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
     const onSubmit = (registrationData) => {
@@ -35,7 +37,7 @@ const Register = () => {
                             lastLoginAt: new Date(parseInt(updatedUser.reloadUserInfo.lastLoginAt)).toLocaleString(),
 
                         }
-                        axios.post('http://localhost:5000/users', storedUserData);
+                        axiosPublic.post('/users', storedUserData);
 
                         Swal.fire({
                             title: "Congrats!",
