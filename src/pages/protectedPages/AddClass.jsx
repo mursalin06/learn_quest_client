@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/AuthContext";
+import axios from "axios";
 
 const AddClass = () => {
     const { user } = useContext(AuthContext)
@@ -8,9 +9,10 @@ const AddClass = () => {
     const onClassSubmit = data => {
         const newClassData = {
             ...data,
-            status: "Pending"
+            status: "pending"
         }
-        console.log(newClassData)
+        // console.log(newClassData);
+        axios.post('http://localhost:5000/classes', newClassData);
     };
 
     return (
