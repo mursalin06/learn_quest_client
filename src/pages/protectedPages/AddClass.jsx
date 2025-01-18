@@ -1,19 +1,64 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/AuthContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddClass = () => {
-    const { user } = useContext(AuthContext)
-    const { register, handleSubmit } = useForm();
-    const onClassSubmit = data => {
-        const newClassData = {
-            ...data,
-            status: "pending"
+    const navigate = useNavigate();
+    const { user, setLoading, loading } = useContext(AuthContext)
+    const { register, handleSubmit, reset } = useForm();
+    const [file, setFile] = useState(null);
+
+    const handleFileChange = async (e) => {
+        setFile(e.target.files[0]);
+    }
+
+    const onClassSubmit = async (data) => {
+        if (!file) return Swal.fire({
+            title: "Error!",
+            text: "Please upload an image file ...",
+            icon: "error"
+        });
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "learn_quest_preset");
+        setLoading(true);
+        try {
+            const response = await axios.post(`https://api.cloudinary.com/v1_1/db0iyqtgd/image/upload`, formData);
+            const uploadedImageUrl = response.data.url;
+            data.image = uploadedImageUrl;
+
+            // 
+            const newClassData = {
+                ...data,
+                status: "pending"
+            }
+            console.log(newClassData);
+            axios.post('http://localhost:5000/classes', newClassData);
+            Swal.fire({
+                title: "Congrats!",
+                text: "Class added Successfully!",
+                icon: "success"
+            });
+            setLoading(false);
+
+            if (!loading) {
+                reset();
+                navigate('/dashboard/my-class')
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // console.log(newClassData);
-        axios.post('http://localhost:5000/classes', newClassData);
-    };
+    }
+
+
+    // console.log(classData, file);
+
+    // const onClassSubmit = data => {
+
+    //  };
 
     return (
         <div>
@@ -95,13 +140,18 @@ const AddClass = () => {
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
-                            <input
+                            {/* <input
                                 {...register("image", { required: true })}
                                 type="text"
                                 placeholder="image "
                                 className="input rounded-full input-bordered"
                                 required
-                            />
+                            /> */}
+                            <input
+                                {...register("image", { required: true })}
+                                type="file"
+                                onChange={handleFileChange}
+                                className="file-input file-input-bordered w-full" />
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-success rounded-full text-white">Add Class</button>

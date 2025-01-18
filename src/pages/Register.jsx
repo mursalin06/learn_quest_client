@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-// TODO: REGEX
+// TODO: REGEX, LOADING SPINNER, ERROR ELEMENT
 
 const Register = () => {
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
