@@ -102,7 +102,7 @@ const Navbar = () => {
                                 className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
                             >
                                 <p aria-readonly className="font-medium flex items-center gap-2"><FaUser></FaUser>{user?.displayName}</p>
-                                <NavLink to="/dashboard" className="nav-link w-fit">
+                                <NavLink to="/dashboard/add-class" className="nav-link w-fit">
                                     <li>Dashboard</li>
                                 </NavLink>
                                 <div>

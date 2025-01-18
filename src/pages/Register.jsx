@@ -10,7 +10,7 @@ import axios from "axios";
 // TODO: REGEX
 
 const Register = () => {
-    const { createUser, setUser, updateUserProfile, user } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
