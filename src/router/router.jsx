@@ -16,6 +16,7 @@ import AddClass from "../pages/protectedPages/AddClass";
 import MyClass from "../pages/protectedPages/MyClass";
 import Profile from "../pages/protectedPages/Profile";
 import ClassDetails from "../pages/protectedPages/ClassDetails";
+import Payment from "../pages/protectedPages/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
     {
         path: "/class/:id",
         element:<ClassDetails></ClassDetails>
+    },
+    {
+        path: "/payment/:id",
+        element:<Payment></Payment>
     },
     {
         path: '/dashboard',

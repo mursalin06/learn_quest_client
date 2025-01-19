@@ -20,9 +20,9 @@ const ClassCard = ({ classData }) => {
                     <p><span className='font-semibold'>Price:</span> <span className='font-medium'>${price}</span></p>
                 </div>
                 <div className="card-actions justify-center">
-                    <Link to={`/class/${_id}`} 
-                    className='w-full'>
-                    <button className="btn btn-sm w-full px-6 text-sm bg-[#825afa] text-white hover:bg-[#825afa]">Enroll</button>
+                    <Link to={`/class/${_id}`}
+                        className='w-full'>
+                        <button className="btn btn-sm w-full px-6 text-sm bg-[#825afa] text-white hover:bg-[#825afa]">Enroll</button>
                     </Link>
                 </div>
             </div>
