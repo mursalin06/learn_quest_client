@@ -3,12 +3,42 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import AuthContext from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const TeachOnLearnQuest = () => {
+    const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+
+        try {
+            const newApplicationData = {
+                ...data,
+                status: "pending"
+            }
+            console.log(newApplicationData);
+            axiosPublic.post('/applications', newApplicationData);
+            Swal.fire({
+                title: "Congrats!",
+                text: "Application Submitted Successfully!",
+                icon: "success"
+            });
+            reset();
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: "Opps!",
+                text: "Couldn't submit application data!",
+                icon: "error"
+            });
+        }
+    };
+
+
     return (
+        // TODO: note of 5th requirement from req. doc.
         <div>
             <nav>
                 <Navbar></Navbar>
@@ -33,6 +63,20 @@ const TeachOnLearnQuest = () => {
                                     />
                                 </div>
                                 {/* IMAGES (who logged in) */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Image</span>
+                                    </label>
+                                    <input
+                                        {...register("photoUrl", { required: true })}
+                                        type="text"
+                                        placeholder="photo"
+                                        readOnly
+                                        value={user?.photoURL || ""}
+                                        className="input rounded-full input-bordered"
+                                        required
+                                    />
+                                </div>
                                 {/* EMAIL */}
                                 <div className="form-control">
                                     <label className="label">
@@ -42,6 +86,9 @@ const TeachOnLearnQuest = () => {
                                         {...register("email", { required: true })}
                                         type="email"
                                         placeholder="email"
+                                        value={user?.email || ""}
+                                        readOnly
+                                        disabled
                                         className="input rounded-full input-bordered"
                                         required
                                     />
