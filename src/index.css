@@ -3,15 +3,17 @@
 @tailwind utilities;
 
 .nav-link {
-    font-weight: 600; 
+    font-weight: 600;
     color: #333333;
 }
+
 .nav-link:hover {
     color: #20B2AA;
-    color:royalblue;
+    color: royalblue;
 }
+
 .nav-link.active {
-    border-bottom: 3px solid #825afa ;
+    border-bottom: 3px solid #825afa;
     color: #825afa;
 }
 
@@ -19,15 +21,28 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .dashboard-sidebar a.active {
     background-color: rgba(255, 255, 255, 0.4);
-    padding-right:160px;
+    padding-right: 160px;
     padding-left: 20px;
     color: #000;
-    border-bottom: 3px solid #fff; 
+    border-bottom: 3px solid #fff;
 }
 
-html{
+/* Styles for mobile devices */
+@media (max-width: 768px) {
+    .dashboard-sidebar a.active {
+        padding-left: 0;
+        margin-right: 0;
+        background-color: transparent;
+        color: #000;
+        text-align: center;
+        border-bottom: 3px solid #fff;
+    }
+}
+
+html {
     overflow-y: scroll;
     overflow-x: hidden;
 }

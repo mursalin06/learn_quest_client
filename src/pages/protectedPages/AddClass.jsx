@@ -58,22 +58,12 @@ const AddClass = () => {
                 icon: "error"
             });
         }
-        // finally {
-        //     setLoading(false);
-        // }
     }
-
-
-    // console.log(classData, file);
-
-    // const onClassSubmit = data => {
-
-    //  };
 
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
-                <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-1/3 shadow-2xl">
+                <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-2/3 shadow-2xl">
                     <h2 className="text-2xl font-bold text-center pt-6">Add a Class</h2>
                     <form onSubmit={handleSubmit(onClassSubmit)} className="card-body">
                         {/* TITLE */}

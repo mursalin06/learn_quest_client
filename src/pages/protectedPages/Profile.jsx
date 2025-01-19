@@ -19,7 +19,7 @@ const Profile = () => {
     // console.log(userData);
     return (
         <div className="flex justify-center items-center min-h-screen">
-            <div className="w-96 border flex flex-col justify-center items-center  ">
+            <div className="md:w-96 border flex flex-col justify-center items-center  ">
                 <div className="bg-[#825afa] rounded-t-xl w-full py-8 text-center">
                     <div className="avatar">
                         <div className="mask mask-squircle w-28">

@@ -61,22 +61,25 @@ const MyClass = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, delete it!",
         }).then((result) => {
-            axiosPublic.delete(`/class/${id}`)
-                .then(() => {
-                    // console.log(response.data);
-                    Swal.fire("Deleted!", "Your class has been deleted.", "success");
-                    // const updatedClasses = myClassData.filter((classItem) => classItem._id !== id);
-                    // setClassData(updatedClasses); 
-                    refetch();
-                })
-                .catch((error) => {
-                    console.error("Error deleting class:", error);
-                    Swal.fire("Error!", "Failed to delete the class. Please try again.", "error");
-                }).finally(() => {
-                    setLoading(false);
-                })
+            if (result.isConfirmed) {
+                axiosPublic
+                    .delete(`/class/${id}`)
+                    .then(() => {
+                        Swal.fire("Deleted!", "Your class has been deleted.", "success");
+                        refetch();
+                    })
+                    .catch((error) => {
+                        console.error("Error deleting class:", error);
+                        Swal.fire("Error!", "Failed to delete the class. Please try again.", "error");
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    });
+            } else {
+                setLoading(false);
+            }
         });
     }
 
