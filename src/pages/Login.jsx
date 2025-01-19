@@ -25,7 +25,7 @@ const Login = () => {
                     icon: "success"
                 });
                 reset();
-                navigate('/');
+                navigate(location.state?.from || "/");
             })
             .catch((err) => {
                 console.error(err, "Error occurred while logging in ... ");
@@ -46,8 +46,10 @@ const Login = () => {
                     text: "You're Signed In",
                     icon: "success"
                 });
-                console.log(result.user);
-                navigate('/');
+                // console.log(result.user);
+
+                navigate(location.state?.from || "/");
+
                 const storedUserData = {
                     name: result.user.displayName,
                     email: result.user.email,
@@ -59,7 +61,7 @@ const Login = () => {
                 }
                 axios.post('/users', storedUserData);
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.error(err, "error while logging in with google");
                 Swal.fire({
                     title: "OPPS!",

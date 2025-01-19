@@ -19,6 +19,7 @@ import ClassDetails from "../pages/protectedPages/ClassDetails";
 import Payment from "../pages/protectedPages/Payment";
 import Error from "../components/ErrorElement";
 import ErrorElement from "../components/ErrorElement";
+import PrivateRoute from "../pages/Private/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -56,32 +57,42 @@ export const router = createBrowserRouter([
     },
     {
         path: "/class/:id",
-        element:<ClassDetails></ClassDetails>
+        element: <PrivateRoute>
+            <ClassDetails></ClassDetails>
+        </PrivateRoute>
     },
     {
         path: "/payment/:id",
-        element:<Payment></Payment>
+        element: <Payment></Payment>
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>,
         children: [
             {
                 path: '/dashboard/add-class',
-                element: <AddClass></AddClass>
+                element: <PrivateRoute>
+                    <AddClass></AddClass>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/my-class/:email',
-                element: <MyClass></MyClass>
+                element: <PrivateRoute>
+                    <MyClass></MyClass>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/profile',
-                element: <Profile></Profile>
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
             }
         ]
     },
     {
-        path:'*',
-        element:<ErrorElement></ErrorElement>
+        path: '*',
+        element: <ErrorElement></ErrorElement>
     }
 ]);
