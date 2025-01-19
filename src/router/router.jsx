@@ -15,56 +15,61 @@ import Dashboard from "../layouts/Dashboard";
 import AddClass from "../pages/protectedPages/AddClass";
 import MyClass from "../pages/protectedPages/MyClass";
 import Profile from "../pages/protectedPages/Profile";
+import ClassDetails from "../pages/protectedPages/ClassDetails";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        children:[
+        children: [
             {
-                path:'/',
+                path: '/',
                 element: <>
-                <Banner></Banner>
-                <Partners></Partners>
-                <RecruitInstructor></RecruitInstructor>
-                <ContactUs></ContactUs>
-                <Newsletter></Newsletter>
-                </>  
+                    <Banner></Banner>
+                    <Partners></Partners>
+                    <RecruitInstructor></RecruitInstructor>
+                    <ContactUs></ContactUs>
+                    <Newsletter></Newsletter>
+                </>
             }
         ]
     },
     {
-        path:'/signIn',
-        element:<Login></Login>
+        path: '/signIn',
+        element: <Login></Login>
     },
     {
-        path:"/register",
+        path: "/register",
         element: <Register></Register>
     },
     {
-        path:'/all-classes',
-        element:<AllClasses></AllClasses>
+        path: '/all-classes',
+        element: <AllClasses></AllClasses>
 
     },
     {
-        path:'/teach-on-lq',
-        element:<TeachOnLearnQuest></TeachOnLearnQuest>
+        path: '/teach-on-lq',
+        element: <TeachOnLearnQuest></TeachOnLearnQuest>
     },
     {
-        path:'/dashboard',
-        element:<Dashboard></Dashboard>,
-        children:[
+        path: "/class/:id",
+        element:<ClassDetails></ClassDetails>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
             {
-                path:'/dashboard/add-class',
-                element:<AddClass></AddClass>
+                path: '/dashboard/add-class',
+                element: <AddClass></AddClass>
             },
             {
-                path:'/dashboard/my-class',
-                element:<MyClass></MyClass>
+                path: '/dashboard/my-class',
+                element: <MyClass></MyClass>
             },
             {
-                path:'/dashboard/profile',
-                element:<Profile></Profile>
+                path: '/dashboard/profile',
+                element: <Profile></Profile>
             }
         ]
     }
