@@ -17,6 +17,8 @@ import MyClass from "../pages/protectedPages/MyClass";
 import Profile from "../pages/protectedPages/Profile";
 import ClassDetails from "../pages/protectedPages/ClassDetails";
 import Payment from "../pages/protectedPages/Payment";
+import Error from "../components/ErrorElement";
+import ErrorElement from "../components/ErrorElement";
 
 export const router = createBrowserRouter([
     {
@@ -77,5 +79,9 @@ export const router = createBrowserRouter([
                 element: <Profile></Profile>
             }
         ]
+    },
+    {
+        path:'*',
+        element:<ErrorElement></ErrorElement>
     }
 ]);
