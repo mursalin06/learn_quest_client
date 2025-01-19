@@ -1,11 +1,12 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
+    const params = useParams();
     return (
         <section>
             <nav>
@@ -23,7 +24,7 @@ const Dashboard = () => {
                             <NavLink to={`/dashboard/my-class/${user?.email}`} className="nav-link w-fit">
                                 <li className='text-white'>My Class</li>
                             </NavLink>
-                            <NavLink to="/dashboard/profile" className="nav-link w-fit">
+                            <NavLink to={`/dashboard/profile`} className="nav-link w-fit">
                                 <li className='text-white'>Profile</li>
                             </NavLink>
                         </ul>

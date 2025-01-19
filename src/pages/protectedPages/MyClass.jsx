@@ -5,22 +5,21 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
-
+// TODO: SEE DETAILS section of Req. 17
 const MyClass = () => {
     const axiosPublic = useAxiosPublic();
     const [myClassData, refetch] = useMyClasses();
     const { setLoading } = useContext(AuthContext);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClass, setSelectedClass] = useState(null);
-
+    // console.log(selectedClass)
     const { register, handleSubmit, reset } = useForm();
     // Open modal and populate fields
     const handleOpenModal = (classData) => {
         setSelectedClass(classData);
         reset({
             title: classData.title,
-            name: classData.displayName || "",
+            name: classData.name,
             email: classData.email,
             price: classData.price,
             description: classData.description,
@@ -29,7 +28,6 @@ const MyClass = () => {
         });
         setIsModalOpen(true);
     };
-    // Close update modal
     const handleCloseModal = () => {
         setSelectedClass(null);
         setIsModalOpen(false);
@@ -150,7 +148,7 @@ const MyClass = () => {
                                     {...register("name")}
                                     type="text"
                                     name="name"
-                                    defaultValue={selectedClass?.displayName || ""}
+                                    defaultValue={selectedClass?.name || ""}
                                     readOnly
                                     disabled
                                     className="input input-bordered w-full"
