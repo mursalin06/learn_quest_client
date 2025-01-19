@@ -8,17 +8,16 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const TeachOnLearnQuest = () => {
     const axiosPublic = useAxiosPublic();
-    const { user } = useContext(AuthContext);
-    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const { user,setLoading } = useContext(AuthContext);
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
-
+        setLoading(true);
         try {
             const newApplicationData = {
                 ...data,
                 status: "pending"
             }
-            console.log(newApplicationData);
+            // console.log(newApplicationData);
             axiosPublic.post('/applications', newApplicationData);
             Swal.fire({
                 title: "Congrats!",
@@ -33,6 +32,8 @@ const TeachOnLearnQuest = () => {
                 text: "Couldn't submit application data!",
                 icon: "error"
             });
+        }finally{
+            setLoading(false);
         }
     };
 
