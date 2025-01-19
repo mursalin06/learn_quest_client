@@ -48,7 +48,7 @@ const AddClass = () => {
 
             if (!loading) {
                 reset();
-                navigate('/dashboard/my-class')
+                navigate(`/dashboard/my-class/${user?.email}`)
             }
         } catch (err) {
             console.log(err);

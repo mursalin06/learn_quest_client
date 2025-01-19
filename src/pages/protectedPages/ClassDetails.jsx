@@ -20,7 +20,7 @@ const ClassDetails = () => {
                 <div className="card card-compact bg-base-100 shadow-xl md:w-1/2 mx-auto mt-12">
                     <figure>
                         <img
-                            className='md:h-[330px] w-full'
+                            className=' w-full'
                             src={image} />
                     </figure>
                     <div className="card-body">
