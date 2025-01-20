@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import recruiterImage from '../assets/recruiter/req.jpg'
 import SectionTitle from '../components/SectionTitle';
 
@@ -12,7 +13,7 @@ const RecruitInstructor = () => {
                 <div className='text-center md:text-start'>
                     <h2 className='text-3xl font-bold'>Join Our Team of Inspiring Educators</h2>
                     <p className='font-semibold'>Empower Learners Worldwide by Sharing Your Knowledge and Skills.</p>
-                    <button className='btn bg-[#825afa]  text-white'>Start Teaching today!</button>
+                    <Link to='teach-on-lq' className='btn bg-[#825afa]  text-white'>Start Teaching today!</Link>
                 </div>
             </div>
         </div>

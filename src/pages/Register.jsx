@@ -5,14 +5,13 @@ import Footer from "../components/Footer";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
-// TODO: REGEX, LOADING SPINNER, ERROR ELEMENT
+// TODO: REGEX
 
 const Register = () => {
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
@@ -116,12 +115,24 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input
-                                    {...register("password", { required: true })}
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Password must be at least 6 characters long"
+                                        },
+                                        pattern: {
+                                            value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/,
+                                            message: "Password must include uppercase, lowercase, number, and special character"
+                                        }
+                                    })}
                                     type="password"
                                     placeholder="password"
                                     className="input rounded-full input-bordered"
-                                    required
                                 />
+                                {errors.password && (
+                                    <span className="text-red-500 text-sm py-2">{errors.password.message}</span>
+                                )}
                             </div>
                             <p className="hover:underline">
                                 <Link to="/signIn">
