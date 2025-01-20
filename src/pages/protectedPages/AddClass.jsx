@@ -37,7 +37,7 @@ const AddClass = () => {
                 ...data,
                 status: "pending"
             }
-            console.log(newClassData);
+            // console.log(newClassData);
             axiosPublic.post('/classes', newClassData);
             Swal.fire({
                 title: "Congrats!",
