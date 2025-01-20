@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../components/Loading';
+import Swal from 'sweetalert2';
 
 const AllClass = () => {
     const axiosPublic = useAxiosPublic();
     const [isProgressVisible, setIsProgressVisible] = useState(null);
     // fetch all class data
-    const { data: allClassArr = [], isLoading } = useQuery({
+    const { data: allClassArr = [], isLoading, refetch } = useQuery({
         queryKey: ['all-class'],
         queryFn: async () => {
             const response = await axiosPublic.get('/classes');
@@ -21,16 +22,20 @@ const AllClass = () => {
         try {
             const response = await axiosPublic.patch(`/classes/${id}/status`, { status });
             console.log(`${status} response:`, response.data);
-
-            // Optimistically update the cache
-            queryClient.invalidateQueries(['all-class']);
+            Swal.fire({
+                title: "Good job!",
+                text: `Class ${status}`,
+                icon: "success"
+            });
+            refetch()
+            // QueryClient.invalidateQueries(['all-class']);
         } catch (error) {
             console.error(`Failed to update status to ${status}:`, error);
         }
     };
-
+    // Toggle visibility of progress for this class
     const handleShowProgress = (id) => {
-        setIsProgressVisible(id); // Toggle visibility of progress for this class
+        setIsProgressVisible(id);
     };
 
     return (
@@ -113,7 +118,7 @@ const AllClass = () => {
                                             <div className="mt-2">
                                                 <h3>Class Progress: {classItem.progress}%</h3>
                                                 <div className="h-2 bg-gray-200 w-10/12 rounded-full">
-                                                    <Link 
+                                                    <Link
                                                     // to={`/class/id/progress`}
                                                     > <div
                                                         className="h-2 bg-blue-500 rounded-full"

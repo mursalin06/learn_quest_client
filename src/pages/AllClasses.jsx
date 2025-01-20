@@ -12,7 +12,7 @@ const AllClasses = () => {
 
     // TODO: use filtered classes
 
-    // const approvedClasses = allClassData.filter((classData)=>classData.status === 'approved');
+    const approvedClasses = allClassData.filter((classData)=>classData.status === 'approved');
     // console.log(approvedClasses)
     return (
         <div>
@@ -28,7 +28,7 @@ const AllClasses = () => {
                 {/*  */}
                 {loading ? <Loading></Loading> : <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-11/12 mx-auto my-10">
                     {
-                        allClassData.map((classData) => <ClassCard classData={classData} key={classData._id}></ClassCard>)
+                        approvedClasses.map((classData) => <ClassCard classData={classData} key={classData._id}></ClassCard>)
                     }
                 </div>}
 
