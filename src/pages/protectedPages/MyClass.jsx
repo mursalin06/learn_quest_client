@@ -203,20 +203,6 @@ const MyClass = () => {
                                     required
                                 />
                             </label>
-                            {/* <label className="block mb-4">
-                                Status:
-                                <select
-                                    {...register("status")}
-                                    name="status"
-                                    defaultValue={selectedClass.status}
-                                    className="select select-bordered w-full"
-                                    required
-                                >
-                                    <option value="pending">Pending</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
-                                </select>
-                            </label> */}
                             <label className="block mb-2">
                                 Status:
                                 <input

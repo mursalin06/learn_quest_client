@@ -23,6 +23,7 @@ import PrivateRoute from "../pages/Private/PrivateRoute";
 import AllClass from "../pages/protectedPages/AdminDashboard/AllClass";
 import AllUsers from "../pages/protectedPages/AdminDashboard/AllUsers";
 import TeacherRequests from "../pages/protectedPages/AdminDashboard/TeacherRequests";
+import MyEnrollClass from "../pages/protectedPages/MyEnrollClass";
 
 export const router = createBrowserRouter([
     {
@@ -66,7 +67,9 @@ export const router = createBrowserRouter([
     },
     {
         path: "/payment/:id",
-        element: <Payment></Payment>
+        element: <PrivateRoute>
+            <Payment></Payment>
+        </PrivateRoute>
     },
     {
         path: '/dashboard',
@@ -74,6 +77,7 @@ export const router = createBrowserRouter([
             <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
+            // TEACHER ROUTES
             {
                 path: '/dashboard/add-class',
                 element: <PrivateRoute>
@@ -104,6 +108,13 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/teacher-requests',
                 element:<TeacherRequests></TeacherRequests>
+            },
+            // STUDENT ROUTE
+            {
+                path:'/dashboard/my-enroll-class',
+                element:<PrivateRoute>
+                    <MyEnrollClass></MyEnrollClass>
+                </PrivateRoute>
             }
         ]
     },

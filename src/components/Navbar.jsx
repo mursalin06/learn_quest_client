@@ -5,11 +5,15 @@ import AuthContext from "../context/AuthContext";
 import { FaUser } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { IoLogOut } from "react-icons/io5";
+import useAllUsers from "../hooks/useAllUsers";
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user);
+    const [usersArr, refetch] = useAllUsers();
+    const getUserData = usersArr.find((loggedUser) => user?.email === loggedUser.email);
+    const userRole = getUserData?.role;
+    // console.log(userRole);
 
     const links = (
         <>
@@ -87,25 +91,29 @@ const Navbar = () => {
                         <div className="border-2 border-[#825afa] rounded-full">
                             <label
                                 tabIndex={0}
-                                className="flex items-center gap-2 cursor-pointer"
-                            >
-
+                                className="flex items-center gap-2 cursor-pointer">
                                 <img
                                     className="w-12 h-12 rounded-full"
                                     src={user.photoURL || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?t=st=1737103962~exp=1737107562~hmac=5d502a421ca6150f793d627f83a57d9b8950ef1ae92851073c87834244c92f91&w=740"}
                                     alt="User Profile"
                                 />
-
                             </label>
                             <ul
                                 tabIndex={0}
-                                className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56"
-                            >
+                                className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56">
                                 <p aria-readonly className="font-medium flex items-center gap-2"><FaUser></FaUser>{user?.displayName}</p>
-                                <NavLink 
-                                to='/dashboard'
-                                // to="/dashboard/add-class" 
-                                className="nav-link w-fit">
+                                <NavLink
+                                    to={
+                                        userRole === "admin"
+                                            ? "/dashboard/teacher-requests"
+                                            : userRole === "teacher"
+                                                ? "/dashboard/add-class"
+                                                : userRole === "student"
+                                                    ? "/dashboard/my-enroll-class"
+                                                    : "/dashboard"
+                                    }
+                                    // to="/dashboard/add-class" 
+                                    className="nav-link w-fit">
                                     <li>Dashboard</li>
                                 </NavLink>
                                 <div>

@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [usersArr, refetch] = useAllUsers();
     const getUserData = usersArr.find((loggedUser) => user.email === loggedUser.email);
     const userRole = getUserData?.role;
-    
+
     // ++
 
     // const {user} = useContext(AuthContext);
@@ -51,7 +51,8 @@ const Dashboard = () => {
 
                             {/* STUDENT */}
                             {userRole === 'student' && <>
-                                <NavLink to="/dashboard/my-class" className="sidebar-link ">
+                                <p className='font-bold text-center bg-gray-50 rounded-full text-xs'>Student's Dashboard</p>
+                                <NavLink to="/dashboard/my-enroll-class" className="sidebar-link ">
                                     <li className='text-white'>My Enroll Class</li>
                                 </NavLink>
                             </>}
