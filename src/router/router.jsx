@@ -17,7 +17,6 @@ import MyClass from "../pages/protectedPages/MyClass";
 import Profile from "../pages/protectedPages/Profile";
 import ClassDetails from "../pages/protectedPages/ClassDetails";
 import Payment from "../pages/protectedPages/Payment";
-import Error from "../components/ErrorElement";
 import ErrorElement from "../components/ErrorElement";
 import PrivateRoute from "../pages/Private/PrivateRoute";
 import AllClass from "../pages/protectedPages/AdminDashboard/AllClass";
@@ -98,21 +97,21 @@ export const router = createBrowserRouter([
             },
             // ADMIN ROUTES
             {
-                path:'/dashboard/all-classes',
-                element:<AllClass></AllClass>
+                path: '/dashboard/all-classes',
+                element: <AllClass></AllClass>
             },
             {
-                path:'/dashboard/all-users',
-                element:<AllUsers></AllUsers>
+                path: '/dashboard/all-users',
+                element: <AllUsers></AllUsers>
             },
             {
-                path:'/dashboard/teacher-requests',
-                element:<TeacherRequests></TeacherRequests>
+                path: '/dashboard/teacher-requests',
+                element: <TeacherRequests></TeacherRequests>
             },
             // STUDENT ROUTE
             {
-                path:'/dashboard/my-enroll-class',
-                element:<PrivateRoute>
+                path: '/dashboard/my-enroll-class',
+                element: <PrivateRoute>
                     <MyEnrollClass></MyEnrollClass>
                 </PrivateRoute>
             }
