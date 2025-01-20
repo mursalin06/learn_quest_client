@@ -20,6 +20,9 @@ import Payment from "../pages/protectedPages/Payment";
 import Error from "../components/ErrorElement";
 import ErrorElement from "../components/ErrorElement";
 import PrivateRoute from "../pages/Private/PrivateRoute";
+import AllClass from "../pages/protectedPages/AdminDashboard/AllClass";
+import AllUsers from "../pages/protectedPages/AdminDashboard/AllUsers";
+import TeacherRequests from "../pages/protectedPages/AdminDashboard/TeacherRequests";
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +91,19 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <Profile></Profile>
                 </PrivateRoute>
+            },
+            // ADMIN ROUTES
+            {
+                path:'/dashboard/all-classes',
+                element:<AllClass></AllClass>
+            },
+            {
+                path:'/dashboard/all-users',
+                element:<AllUsers></AllUsers>
+            },
+            {
+                path:'/dashboard/teacher-requests',
+                element:<TeacherRequests></TeacherRequests>
             }
         ]
     },

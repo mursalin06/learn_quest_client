@@ -1,12 +1,15 @@
-import { all } from "axios";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import useAllClasses from "../hooks/useAllClasses";
 import ClassCard from "../components/ClassCard";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import Loading from "../components/Loading";
 
 const AllClasses = () => {
+    const { loading, setLoading } = useContext(AuthContext);
     const [allClassData] = useAllClasses();
-    
+
     // TODO: use filtered classes
 
     // const approvedClasses = allClassData.filter((classData)=>classData.status === 'approved');
@@ -23,11 +26,12 @@ const AllClasses = () => {
                     </div>
                 </div>
                 {/*  */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-11/12 mx-auto my-10">
+                {loading ? <Loading></Loading> : <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-11/12 mx-auto my-10">
                     {
-                        allClassData.map((classData)=><ClassCard classData={classData} key={classData._id}></ClassCard>)
+                        allClassData.map((classData) => <ClassCard classData={classData} key={classData._id}></ClassCard>)
                     }
-                </div>
+                </div>}
+
             </section>
             <footer>
                 <Footer></Footer>

@@ -203,7 +203,7 @@ const MyClass = () => {
                                     required
                                 />
                             </label>
-                            <label className="block mb-4">
+                            {/* <label className="block mb-4">
                                 Status:
                                 <select
                                     {...register("status")}
@@ -216,6 +216,18 @@ const MyClass = () => {
                                     <option value="approved">Approved</option>
                                     <option value="rejected">Rejected</option>
                                 </select>
+                            </label> */}
+                            <label className="block mb-2">
+                                Status:
+                                <input
+                                    {...register("status")}
+                                    type="text"
+                                    name="status"
+                                    defaultValue={selectedClass.status}
+                                    className="input input-bordered w-full"
+                                    required
+                                    readOnly
+                                />
                             </label>
                             <div className="flex justify-end gap-2">
                                 <button

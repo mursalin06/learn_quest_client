@@ -47,7 +47,7 @@ const TeachOnLearnQuest = () => {
             <section className="min-h-screen bg-[#F8F9FA]">
                 <div>
                     <div className="hero bg-base-200 min-h-screen">
-                        <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-1/3 shadow-2xl">
+                        <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-2/3 shadow-2xl">
                             <h2 className="text-2xl font-bold text-center pt-6">Apply for A Job</h2>
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                                 {/* NAME */}
@@ -55,6 +55,7 @@ const TeachOnLearnQuest = () => {
                                     <label className="label">
                                         <span className="label-text">Enter your name</span>
                                     </label>
+                                    
                                     <input
                                         {...register("name", { required: true })}
                                         type="text"

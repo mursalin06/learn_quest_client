@@ -17,7 +17,7 @@ const Dashboard = () => {
                     <div className='m-2'>
                         
                         {/* TEACHER'S DASHBOARD NAV LINKS */}
-                        <ul className='menu flex flex-col md:gap-3'>
+                        {/* <ul className='menu flex flex-col md:gap-3'>
                             <NavLink to="/dashboard/add-class" className="nav-link md:w-fit">
                                 <li className='text-white'>Add Class</li>
                             </NavLink>
@@ -27,21 +27,24 @@ const Dashboard = () => {
                             <NavLink to={`/dashboard/profile`} className="nav-link md:w-fit">
                                 <li className='text-white'>Profile</li>
                             </NavLink>
-                        </ul>
+                        </ul> */}
 
                         {/* ADMIN'S DASHBOARD NAV LINKS */}
                         
-                        {/* <ul className='menu flex flex-col gap-3'>
-                            <NavLink to="/dashboard/add-class" className="nav-link w-fit">
-                                <li className='text-white'>Add Class</li>
+                        <ul className='menu flex flex-col gap-3'>
+                            <NavLink to="/dashboard/teacher-requests" className="nav-link w-fit">
+                                <li className='text-white '>Teacher Request</li>
                             </NavLink>
-                            <NavLink to="/dashboard/my-class" className="nav-link w-fit">
-                                <li className='text-white'>My Class</li>
+                            <NavLink to="/dashboard/all-users" className="nav-link w-fit">
+                                <li className='text-white'>Users</li>
                             </NavLink>
-                            <NavLink to="/dashboard/profile" className="nav-link w-fit">
+                            <NavLink to="/dashboard/all-classes" className="nav-link w-fit">
+                                <li className='text-white'>All Classes</li>
+                            </NavLink>
+                            <NavLink to={`/dashboard/profile`} className="nav-link md:w-fit">
                                 <li className='text-white'>Profile</li>
                             </NavLink>
-                        </ul> */}
+                        </ul>
 
                         {/* STUDENT'S DASHBOARD NAV LINKS  */}
 
