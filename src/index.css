@@ -17,7 +17,7 @@
     color: #825afa;
 }
 
-.dashboard-sidebar li {
+/* .dashboard-sidebar li {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -28,19 +28,9 @@
     padding-left: 20px;
     color: #000;
     border-bottom: 3px solid #fff;
-}
+} */
 
-/* Styles for mobile devices */
-@media (max-width: 768px) {
-    .dashboard-sidebar a.active {
-        padding-left: 0;
-        margin-right: 0;
-        background-color: transparent;
-        color: #000;
-        text-align: center;
-        border-bottom: 3px solid #fff;
-    }
-}
+
 
 html {
     overflow-y: scroll;

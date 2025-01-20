@@ -1,0 +1,36 @@
+.sidebar-link {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.sidebar-link.active {
+    background-color: #095fc2;
+    text-decoration: none;
+}
+
+.sidebar-link:hover {
+    background-color: #b0b0b0;
+    text-decoration: none;
+}
+.sidebar-link li {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* Styles for mobile devices */
+@media (max-width: 768px) {
+    .sidebar-link a.active {
+        padding-left: 0;
+        margin-right: 0;
+        background-color: transparent;
+        color: #000;
+        text-align: center;
+        border-bottom: 3px solid #fff;
+    }
+}

@@ -1,26 +1,17 @@
 import React from 'react';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { useQuery } from '@tanstack/react-query';
 import { FaUsers } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
+import useAllUsers from '../../../hooks/useAllUsers';
 
 const AllUsers = () => {
 
     // TODO: Implement a server-side search functionality to find a specific user (via username/email).
 
-    const axiosPublic = useAxiosPublic();
-    // fetch all users data
-    const { data: usersArr = [], refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const response = await axiosPublic.get('/users');
-            return response.data;
-        }
-    });
-    // console.log(usersArr);
+    const [usersArr, refetch] = useAllUsers();
+
 
     const handleMakeAdmin = async(id, role) => {
-        console.log("ID:", id, "ROLE:", role);
+        // console.log("ID:", id, "ROLE:", role);
 
         try {
             const response = await axiosPublic.patch(`/users/${id}/role`, { role });
