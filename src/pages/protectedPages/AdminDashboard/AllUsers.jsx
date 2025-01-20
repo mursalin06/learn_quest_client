@@ -2,8 +2,12 @@ import React from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { FaUsers } from 'react-icons/fa6';
+import Swal from 'sweetalert2';
 
 const AllUsers = () => {
+
+    // TODO: Implement a server-side search functionality to find a specific user (via username/email).
+
     const axiosPublic = useAxiosPublic();
     // fetch all users data
     const { data: usersArr = [], refetch } = useQuery({
@@ -13,7 +17,24 @@ const AllUsers = () => {
             return response.data;
         }
     });
-    console.log(usersArr);
+    // console.log(usersArr);
+
+    const handleMakeAdmin = async(id, role) => {
+        console.log("ID:", id, "ROLE:", role);
+
+        try {
+            const response = await axiosPublic.patch(`/users/${id}/role`, { role });
+            console.log(`${role} response:`, response.data);
+            Swal.fire({
+                title: "Congrats!",
+                text: `User role Upgraded to ${role}`,
+                icon: "success"
+            });
+            refetch()
+        } catch (error) {
+            console.error(`Failed to update role to ${role}:`, error);
+        }
+    }
 
     return (
         <div>
@@ -48,7 +69,10 @@ const AllUsers = () => {
                                     </td>
                                     <td>{singleUser?.email}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs"><FaUsers></FaUsers> Make Admin</button>
+                                        <button
+                                            onClick={() => handleMakeAdmin(singleUser._id, "admin")}
+                                            disabled={singleUser.role === 'admin'}
+                                            className="btn btn-ghost btn-xs"><FaUsers></FaUsers> Make Admin</button>
                                     </th>
                                 </tr>)
                             }
