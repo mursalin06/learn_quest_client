@@ -30,6 +30,8 @@ const Dashboard = () => {
                         </ul> */}
 
                         {/* ADMIN'S DASHBOARD NAV LINKS */}
+
+                        {/* Admin email: joy@crookes.com, pass: Aa!112 */}
                         
                         <ul className='menu flex flex-col gap-3'>
                             <NavLink to="/dashboard/teacher-requests" className="nav-link w-fit">
