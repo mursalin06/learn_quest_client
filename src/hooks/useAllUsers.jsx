@@ -6,7 +6,7 @@ const useAllUsers = () => {
     
     const axiosPublic = useAxiosPublic();
     // fetch all users data
-    const { data: usersArr = [], refetch } = useQuery({
+    const { data: usersArr = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const response = await axiosPublic.get('/users');

@@ -9,12 +9,12 @@
 }
 
 .sidebar-link.active {
-    background-color: #a710ff;
+    background-color: #4b0088;
     text-decoration: none;
 }
 
 .sidebar-link:hover {
-    background-color: #4b0088;
+    background-color: #a710ff;
     text-decoration: none;
 }
 .sidebar-link li {

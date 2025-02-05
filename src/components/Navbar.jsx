@@ -40,7 +40,7 @@ const Navbar = () => {
                 });
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 Swal.fire({
                     title: "Ohh Crap!",
                     text: "Failed to Log Out",
@@ -84,6 +84,8 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
+
+            {/* Avatar */}
             <div className="navbar-end">
                 {user ? (
                     <div className="dropdown dropdown-end flex justify-center items-center gap-3 z-10">

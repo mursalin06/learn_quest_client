@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Banner from "../home/banner/Banner";
 import Login from "../pages/Login";
@@ -12,8 +10,6 @@ import RecruitInstructor from "../pages/RecruitInstructor";
 import ContactUs from "../pages/ContactUs";
 import Newsletter from "../components/Newsletter";
 import Dashboard from "../layouts/Dashboard";
-import AddClass from "../pages/protectedPages/AddClass";
-import MyClass from "../pages/protectedPages/MyClass";
 import Profile from "../pages/protectedPages/Profile";
 import ClassDetails from "../pages/protectedPages/ClassDetails";
 import Payment from "../pages/protectedPages/Payment";
@@ -22,103 +18,151 @@ import PrivateRoute from "../pages/Private/PrivateRoute";
 import AllClass from "../pages/protectedPages/AdminDashboard/AllClass";
 import AllUsers from "../pages/protectedPages/AdminDashboard/AllUsers";
 import TeacherRequests from "../pages/protectedPages/AdminDashboard/TeacherRequests";
-import MyEnrollClass from "../pages/protectedPages/MyEnrollClass";
+import TeacherClassDetails from "../pages/protectedPages/Teachers/TeacherClassDetails";
+import MyClass from "../pages/protectedPages/Teachers/MyClass";
+import AddClass from "../pages/protectedPages/Teachers/AddClass";
+import MyEnrollClass from "../pages/protectedPages/student/MyEnrollClass";
+import EnrollClassDetails from "../pages/protectedPages/student/EnrollClassDetails";
+import TestTable from "../pages/TestTable";
+import PopularCourses from "../pages/PopularCourses";
+import Feedback from "../components/Feedback/Feedback";
+import State from "../components/State";
 
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
         path: "/",
-        element: <MainLayout></MainLayout>,
-        children: [
-            {
-                path: '/',
-                element: <>
-                    <Banner></Banner>
-                    <Partners></Partners>
-                    <RecruitInstructor></RecruitInstructor>
-                    <ContactUs></ContactUs>
-                    <Newsletter></Newsletter>
-                </>
-            }
-        ]
-    },
-    {
-        path: '/signIn',
-        element: <Login></Login>
-    },
-    {
-        path: "/register",
-        element: <Register></Register>
-    },
-    {
-        path: '/all-classes',
-        element: <AllClasses></AllClasses>
+        element: (
+          <>
+            <Banner />
+            <Partners />
+            <PopularCourses/>
+            <RecruitInstructor />
+            <ContactUs />
+            <State/>
+            <Feedback/>
+            <Newsletter />
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/signIn",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/all-classes",
+    element: <AllClasses />,
+  },
+  {
+    path: "/teach-on-lq",
+    element: <TeachOnLearnQuest />,
+  },
+  {
+    path: "/class/:id",
+    element: (
+      <PrivateRoute>
+        <ClassDetails />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/payment/:id",
+    element: (
+      <PrivateRoute>
+        <Payment />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
 
-    },
-    {
-        path: '/teach-on-lq',
-        element: <TeachOnLearnQuest></TeachOnLearnQuest>
-    },
-    {
-        path: "/class/:id",
-        element: <PrivateRoute>
-            <ClassDetails></ClassDetails>
-        </PrivateRoute>
-    },
-    {
-        path: "/payment/:id",
-        element: <PrivateRoute>
-            <Payment></Payment>
-        </PrivateRoute>
-    },
-    {
-        path: '/dashboard',
-        element: <PrivateRoute>
-            <Dashboard></Dashboard>
-        </PrivateRoute>,
-        children: [
-            // TEACHER ROUTES
-            {
-                path: '/dashboard/add-class',
-                element: <PrivateRoute>
-                    <AddClass></AddClass>
-                </PrivateRoute>
-            },
-            {
-                path: '/dashboard/my-class/:email',
-                element: <PrivateRoute>
-                    <MyClass></MyClass>
-                </PrivateRoute>
-            },
-            {
-                path: '/dashboard/profile',
-                element: <PrivateRoute>
-                    <Profile></Profile>
-                </PrivateRoute>
-            },
-            // ADMIN ROUTES
-            {
-                path: '/dashboard/all-classes',
-                element: <AllClass></AllClass>
-            },
-            {
-                path: '/dashboard/all-users',
-                element: <AllUsers></AllUsers>
-            },
-            {
-                path: '/dashboard/teacher-requests',
-                element: <TeacherRequests></TeacherRequests>
-            },
-            // STUDENT ROUTE
-            {
-                path: '/dashboard/my-enroll-class',
-                element: <PrivateRoute>
-                    <MyEnrollClass></MyEnrollClass>
-                </PrivateRoute>
-            }
-        ]
-    },
-    {
-        path: '*',
-        element: <ErrorElement></ErrorElement>
-    }
+    children: [
+      //! TEACHER ROUTES
+      {
+        path: "add-class",
+        element: (
+          <PrivateRoute>
+            <AddClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-class/:email",
+        element: (
+          <PrivateRoute>
+            <MyClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "class/:id",
+        element: (
+          <PrivateRoute>
+            <TeacherClassDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+
+      //! ADMIN ROUTES
+      {
+        path: "all-classes",
+        element: <AllClass />,
+      },
+      {
+        path: "all-users",
+        element: <AllUsers />,
+      },
+      {
+        path: "teacher-requests",
+        element: <TeacherRequests />,
+      },
+
+      //! STUDENT ROUTE
+      {
+        path: "my-enroll-class",
+        element: (
+          <PrivateRoute>
+            <MyEnrollClass />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-enroll/:id",
+        element: (
+          <PrivateRoute>
+            <EnrollClassDetails />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <ErrorElement />,
+  },{
+    path: 'check',
+    element: <TestTable/>
+  }
 ]);

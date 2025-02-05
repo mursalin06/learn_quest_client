@@ -5,15 +5,15 @@ import { useParams } from 'react-router-dom';
 const useClassById = () => {
     const axiosPublic = useAxiosPublic();
     const params = useParams();
-    // console.log(params)
-    const { data: classData = [] } = useQuery({
+    
+    const { data: classData = [], isLoading, refetch } = useQuery({
         queryKey: ['class'],
         queryFn: async () => {
             const response = await axiosPublic.get(`/class/${params.id}`)
             return response.data;
         }
     });
-    return [classData];
+    return [classData, isLoading, refetch];
 };
 
 export default useClassById;

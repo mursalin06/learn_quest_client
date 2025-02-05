@@ -6,18 +6,24 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+
     // create a new user
     const createUser = async (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
             .finally(() => setLoading(false))
     }
+
+
     // update user's profile 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     };
+
+
 
     // login registered user
     const login = async (email, password) => {
@@ -26,6 +32,8 @@ const AuthProvider = ({ children }) => {
             .finally(() => setLoading(false));
     }
 
+
+
     // log-out
     const logOut = async() => {
         setLoading(true);
@@ -33,8 +41,12 @@ const AuthProvider = ({ children }) => {
             .finally(() => setLoading(false));
     }
 
+
+
     // google auth provider
     const provider = new GoogleAuthProvider();
+
+
 
     // google sign-in
     const googleSignIn = async() => {
@@ -43,10 +55,12 @@ const AuthProvider = ({ children }) => {
         .finally(()=>setLoading(false))
     }
 
-    // observer
 
+
+    // observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            // Todo: JWT
             if (currentUser) {
                 setUser(currentUser);
                 setLoading(false)

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
 
@@ -13,6 +14,7 @@ const Login = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic()
 
     const onSubmit = (data) => {
         // console.log(data)
@@ -59,7 +61,7 @@ const Login = () => {
                     lastLoginAt: new Date(parseInt(result.user.reloadUserInfo.lastLoginAt)).toLocaleString(),
 
                 }
-                axios.post('/users', storedUserData);
+                axiosPublic.post('/users', storedUserData);
             })
             .catch((err) => {
                 console.error(err, "error while logging in with google");
