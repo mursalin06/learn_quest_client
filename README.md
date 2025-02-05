@@ -1,62 +1,98 @@
-# Learn Quest - Client Side
+Your project LearnQuest is a MERN-based educational platform aimed at improving skill learning and class management. Based on the provided package.json and .env files, here’s a well-structured README.md for your project:
 
-Welcome to the **Learn Quest** client-side repository! This platform aims to revolutionize how educational institutions, tutors, and students interact, providing efficient and accessible skill learning and class management. The project is built using the MERN stack (MongoDB, Express.js, React, and Node.js).
+LearnQuest
+🚀 LearnQuest is a modern educational platform built with the MERN stack (MongoDB, Express.js, React, and Node.js) to revolutionize how educational institutions, tutors, and students interact. By integrating robust features, LearnQuest enhances learning experiences, streamlines class management, and fosters a user-friendly environment for all stakeholders.
 
-## Live Site URL
+📌 Table of Contents
+Features
+Tech Stack
+Installation
+Configuration
+Usage
+Scripts
+Contributing
+License
+✨ Features
+🔹 Interactive Learning – A dynamic platform for students and tutors.
+🔹 Class Management – Tools for organizing, scheduling, and managing courses.
+🔹 Secure Payment Integration – Powered by Stripe for seamless transactions.
+🔹 Real-time Data Fetching – Optimized with React Query.
+🔹 Authentication & Authorization – Firebase-powered authentication.
+🔹 Responsive UI – Styled with Tailwind CSS and Ant Design.
+🔹 User Notifications – Enhanced user engagement via React Toastify.
+🔹 Smooth Animations – Integrated Swiper.js for an engaging UI experience.
+🛠 Tech Stack
+Tech Description
+React Frontend framework for a dynamic UI
+Node.js Backend runtime for scalable applications
+Express Lightweight backend framework for APIs
+MongoDB NoSQL database for efficient data storage
+Firebase Authentication and cloud storage
+Vite Lightning-fast frontend build tool
+Stripe Secure payment gateway integration
+TailwindCSS Utility-first CSS framework
+📥 Installation
+Before setting up the project, ensure you have Node.js (v16+) and npm (or yarn) installed.
 
-[https://learn-quest-mursalin.netlify.app](https://learn-quest-mursalin.netlify.app)
+1️⃣ Clone the Repository
+sh
+Copy
+Edit
+git clone https://github.com/yourusername/learnquest.git
+cd learnquest
+2️⃣ Install Dependencies
+Using npm:
 
+sh
+Copy
+Edit
+npm install
+Or using yarn:
 
-## Key Features
+sh
+Copy
+Edit
+yarn install
+⚙️ Configuration
+1️⃣ Set Up Environment Variables
+Create a .env file in the root directory and add the following (replace with actual values):
 
-- **Responsive Design:** Fully responsive for mobile, tablet, and desktop views.
-- **User Authentication:** Secure login and sign-up system with JWT and social logins.
-- **Dashboard:** Custom dashboards for students, teachers, and admins with distinct views and functionalities.
-- **Class Management:** Browse, enroll, and manage classes with real-time updates.
-- **Payments:** Integrated payment gateway for seamless class enrollment.
-- **Assignments:** Teachers can add assignments, and students can submit their work.
-- **Teacher Request System:** Users can apply to become teachers and manage their profiles.
+env
+Copy
+Edit
+VITE_apiKey=your-api-key
+VITE_authDomain=your-auth-domain
+VITE_projectId=your-project-id
+VITE_storageBucket=your-storage-bucket
+VITE_messagingSenderId=your-messaging-sender-id
+VITE_appId=your-app-id
+2️⃣ Start the Development Server
+sh
+Copy
+Edit
+npm run dev
+Or
 
-## Technologies Used
+sh
+Copy
+Edit
+yarn dev
+The application should now be running at http://localhost:5173 (or another port specified by Vite).
 
-- **Frontend:** React, React Router, Axios, React Hook Form, React Query (TanStack),
-- **State Management:** React Context API 
-- **Form Validation:** React Hook Form
-- **Styling:** Tailwind CSS, daisyUI
+📜 Scripts
+Command Description
+npm run dev Start the development server (Vite)
+npm run build Build the project for production
+npm run preview Preview the production build
+npm run lint Run ESLint for code quality checks
+🤝 Contributing
+We welcome contributions! Feel free to fork the repo, create a feature branch, and submit a pull request.
 
-## Key Pages
-
-### Homepage
-
-- Banner section with carousel.
-- Highlighted classes based on highest enrollment.
-- Partner logos and description.
-- Feedback carousel.
-- Statistics (total users, total classes, total enrollments).
-- Teacher sign-up section.
-
-### Dashboard (Private Route)
-
-- **Student Dashboard:** Displays enrolled classes and profile.
-- **Teacher Dashboard:** Add, manage, and view classes and assignments.
-- **Admin Dashboard:** Manage user roles, teacher requests, and class approvals.
-
-### Class Details
-
-- View class details and enroll in classes.
-- Payment integration for class enrollment.
-
-## Admin Credentials
-
-- **Admin Email:** admin@learnquest.com
-- **Admin Password:** Admin12345
-
-## Features
-
-1. Fully responsive and mobile-friendly.
-2. Dynamic class browsing and enrollment.
-3. Payment gateway integration.
-4. Real-time feedback and ratings system.
-5. Teacher request submission and management.
-
-
+Steps to Contribute:
+Fork the repository.
+Clone the repo to your local machine.
+Create a new branch for your feature.
+Commit your changes.
+Push to your branch and submit a pull request.
+📜 License
+This project is licensed under the MIT License.
