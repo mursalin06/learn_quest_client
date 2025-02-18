@@ -6,7 +6,7 @@ import logo from '../assets/favicon.png'
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-base-300 p-10 rounded-lg">
+            <footer className="footer bg-base-300 p-6 rounded-lg">
                 <aside>
                     <img className="w-[50px] h-[50px]" src={logo} alt="" />
                     <p>

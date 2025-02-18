@@ -27,7 +27,7 @@ const PopularCourses = () => {
   }
   return (
     <>
-      <div className="w-11/12 mx-auto">
+      <div className="px-6">
         <div className="mb-8">
           <SectionTitle title={"Explore Our Most Popular Courses"} subtitle="Discover the top-rated courses loved by learners worldwide and start your journey today!"/>
         </div>

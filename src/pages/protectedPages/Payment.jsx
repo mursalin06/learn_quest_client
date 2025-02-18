@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import useClassById from "../../hooks/useClassById";
 import Loading from "../../components/Loading";
 
+// todo: add publishable key 
 const stripePromise = loadStripe(import.meta.env.VITE_Stripe_PK);
 
 const Payment = () => {
