@@ -7,10 +7,10 @@ import Footer from '../components/Footer';
 const MainLayout = () => {
     return (
         <div>
-            <nav>
+            <nav className='sticky z-50 top-0 w-full bg-white'>
                 <Navbar></Navbar>
             </nav>
-            <section className='bg-[#F8F9FA] min-h-screen'>
+            <section className='bg-[#F8F9FA] min-h-screen ' >
                 <Outlet></Outlet>
             </section>
             <footer>

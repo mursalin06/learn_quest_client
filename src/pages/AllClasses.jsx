@@ -16,7 +16,7 @@ const AllClasses = () => {
   // console.log(approvedClasses)
   return (
     <div>
-      <nav>
+      <nav className="sticky z-50 top-0 w-full bg-white">
         <Navbar></Navbar>
       </nav>
       <section className="min-h-screen bg-[#F8F9FA]">

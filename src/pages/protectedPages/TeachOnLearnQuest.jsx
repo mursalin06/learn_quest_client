@@ -67,16 +67,16 @@ const TeachOnLearnQuest = () => {
 
   return (
     <div>
-      <nav>
+      <nav className="sticky z-50 top-0 w-full bg-white">
         <Navbar></Navbar>
       </nav>
       <section className={`min-h-screen bg-[#F8F9FA] `}>
         <p
-          className={` text-center my-4 text-green-600 ${
+          className={` text-center py-4 text-red-600 ${
             applied && application.status === "rejected" ? "" : "hidden"
           }`}
         >
-          Your Request rejected. You can Request another application{" "}
+          Your Request has been rejected. You can Request another application{" "}
         </p>
         <div
           className={`${
