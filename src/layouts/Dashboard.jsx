@@ -19,8 +19,8 @@ const Dashboard = () => {
       {/* <nav>
         <Navbar></Navbar>
       </nav> */}
-      <section className="min-h-screen bg-[#F8F9FA] grid grid-cols-12">
-        <div className="md:w-52 w-24 dashboard-sidebar bg-[#825afa] min-h-screen col-span-3">
+      <section className="min-h-screen bg-[#F8F9FA] flex">
+        <div className="md:w-52 w-24 dashboard-sidebar bg-[#825afa] min-h-screen">
           <div className="m-2">
             <ul className="menu flex flex-col gap-3">
               {/* ADMIN */}
@@ -102,7 +102,7 @@ const Dashboard = () => {
             </ul>
           </div>
         </div>
-        <div className="col-span-9">
+        <div className="bg-base-100 w-full">
           <Outlet></Outlet>
         </div>
       </section>
