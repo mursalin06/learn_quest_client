@@ -2,18 +2,26 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import useAllClasses from "../hooks/useAllClasses";
 import ClassCard from "../components/ClassCard";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import Loading from "../components/Loading";
 
 const AllClasses = () => {
-  const { loading, setLoading } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
   const [allClassData] = useAllClasses();
+  const [sortOrder, setSortOrder] = useState(null);
 
   const approvedClasses = allClassData.filter(
     (classData) => classData.status === "approved"
   );
-  // console.log(approvedClasses)
+
+  const sortedClasses = [...approvedClasses];
+  if (sortOrder === "asc") {
+    sortedClasses.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    sortedClasses.sort((a, b) => b.price - a.price);
+  }
+
   return (
     <div>
       <nav className="sticky z-50 top-0 w-full bg-white">
@@ -27,12 +35,25 @@ const AllClasses = () => {
             </h2>
           </div>
         </div>
-        {/*  */}
+        <div className="flex justify-center gap-4 my-6">
+          <button
+            onClick={() => setSortOrder("asc")}
+            className="px-4 py-2 bg-green-600 text-white rounded-md shadow-md hover:bg-green-600"
+          >
+            Sort by Price (Low to High)
+          </button>
+          <button
+            onClick={() => setSortOrder("desc")}
+            className="px-4 py-2 bg-red-600 text-white rounded-md shadow-md hover:bg-red-600"
+          >
+            Sort by Price (High to Low)
+          </button>
+        </div>
         {loading ? (
           <Loading></Loading>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 mx-auto my-10">
-            {approvedClasses.map((classData) => (
+            {sortedClasses.map((classData) => (
               <ClassCard classData={classData} key={classData._id}></ClassCard>
             ))}
           </div>

@@ -16,9 +16,9 @@ const Dashboard = () => {
 
   return (
     <section className="overflow-x-hidden">
-      <nav>
+      {/* <nav>
         <Navbar></Navbar>
-      </nav>
+      </nav> */}
       <section className="min-h-screen bg-[#F8F9FA] grid grid-cols-12">
         <div className="md:w-52 w-24 dashboard-sidebar bg-[#825afa] min-h-screen col-span-3">
           <div className="m-2">
