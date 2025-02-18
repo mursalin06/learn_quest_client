@@ -6,6 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import registerImg from '../assets/images/register.png';
 
 const Register = () => {
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const Register = () => {
                             photoURL: registrationData.photoUrl,
                         };
                         setUser(updatedUser);
-                        // necessary data to store in the DB
+                        
                         const storedUserData = {
                             name: updatedUser.displayName,
                             email: updatedUser.email,
@@ -32,8 +33,7 @@ const Register = () => {
                             photoURL: updatedUser.photoURL,
                             createdAt: new Date(parseInt(updatedUser.reloadUserInfo.createdAt)).toLocaleString(),
                             lastLoginAt: new Date(parseInt(updatedUser.reloadUserInfo.lastLoginAt)).toLocaleString(),
-
-                        }
+                        };
                         axiosPublic.post('/users', storedUserData);
 
                         Swal.fire({
@@ -44,8 +44,7 @@ const Register = () => {
                         reset();
                         navigate('/');
                     })
-                    .catch((error) => {
-                        console.error("An error occurred while updating user profile:", error);
+                    .catch(() => {
                         Swal.fire({
                             title: "OPPS!",
                             text: "Registration Unsuccessful!",
@@ -53,104 +52,73 @@ const Register = () => {
                         });
                     });
             })
-            .catch((error) => {
-                console.error("Error while creating a user:", error);
+            .catch(() => {
+                Swal.fire({
+                    title: "OPPS!",
+                    text: "Error while creating user!",
+                    icon: "error"
+                });
             });
     };
+    
     return (
-        <div>
-            <nav>
-                <Navbar></Navbar>
+        <section>
+            <nav className="sticky z-50 top-0 w-full bg-white">
+                <Navbar />
             </nav>
-            {/*  */}
-            <div>
-                <div className="hero bg-base-200 min-h-screen">
-                    <div className="card bg-base-100 w-full mx-5 md:w-10/12 my-6 lg:w-1/3 shadow-2xl">
+
+            <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-base-200 px-4">
+                {/* Left: Image */}
+                <div className="hidden md:flex w-1/2 justify-center">
+                    <img src={registerImg} alt="Register" className="w-3/4 object-cover" />
+                </div>
+                
+                {/* Right: Register Form */}
+                <div className="w-full md:w-1/2 flex justify-center">
+                    <div className="card bg-base-100 w-full mx-5 md:w-3/4 shadow-2xl">
                         <h2 className="text-2xl font-bold text-center pt-6">Register</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            {/* NAME */}
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Enter your name</span>
-                                </label>
-                                <input
-                                    {...register("name", { required: true })}
-                                    type="text"
-                                    placeholder="name"
-                                    className="input input-bordered rounded-full"
-                                    required
-                                />
+                                <label className="label">Enter your name</label>
+                                <input {...register("name", { required: true })} type="text" placeholder="Name" className="input input-bordered rounded-full" required />
                             </div>
-                            {/* EMAIL */}
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input
-                                    {...register("email", { required: true })}
-                                    type="email"
-                                    placeholder="email"
-                                    className="input rounded-full input-bordered"
-                                    required
-                                />
+                                <label className="label">Email</label>
+                                <input {...register("email", { required: true })} type="email" placeholder="Email" className="input input-bordered rounded-full" required />
                             </div>
-                            {/* PHOTO URL */}
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Photo URL</span>
-                                </label>
-                                <input
-                                    {...register("photoUrl", { required: true })}
-                                    type="text"
-                                    placeholder="photo url"
-                                    className="input rounded-full input-bordered"
-                                    required
-                                />
+                                <label className="label">Photo URL</label>
+                                <input {...register("photoUrl", { required: true })} type="text" placeholder="Photo URL" className="input input-bordered rounded-full" required />
                             </div>
-                            {/* PASSWORD */}
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input
-                                    {...register("password", {
-                                        required: "Password is required",
-                                        minLength: {
-                                            value: 6,
-                                            message: "Password must be at least 6 characters long"
-                                        },
-                                        pattern: {
-                                            value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&#]{6,}$/,
-                                            message: "Password must include uppercase, lowercase, number"
-                                        }
-                                    })}
-                                    type="password"
-                                    placeholder="password"
-                                    className="input rounded-full input-bordered"
-                                />
-                                {errors.password && (
-                                    <span className="text-red-500 text-sm py-2">{errors.password.message}</span>
-                                )}
+                                <label className="label">Password</label>
+                                <input {...register("password", {
+                                    required: "Password is required",
+                                    minLength: { value: 6, message: "Password must be at least 6 characters long" },
+                                    pattern: {
+                                        value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&#]{6,}$/,
+                                        message: "Password must include uppercase, lowercase, number"
+                                    }
+                                })} type="password" placeholder="Password" className="input input-bordered rounded-full" />
+                                {errors.password && <span className="text-red-500 text-sm py-2">{errors.password.message}</span>}
                             </div>
                             <p className="hover:underline">
-                                <Link to="/signIn">
-                                    Already have an account ?
-                                    <span className="text-blue-700 font-bold underline pl-1">
-                                        Sign In
-                                    </span>
+                                <Link to="/signIn">Already have an account?
+                                    <span className="text-[#825afa] underline font-bold pl-1">Sign In</span>
                                 </Link>
                             </p>
                             <div className="form-control mt-6">
-                                <button className="btn btn-success rounded-full text-white">Register</button>
+                                <button className="btn bg-[#D6C9FF] rounded-full">Register</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
             <footer>
-                <Footer></Footer>
+                <Footer />
             </footer>
-        </div>
+        </section>
     );
 };
 
