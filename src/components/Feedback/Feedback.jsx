@@ -37,7 +37,7 @@ const Feedback = () => {
             <div className="text-center py-12 border border-gray-400 flex flex-col justify-center bg-base-300">
               <h2 className="font-semibold text-xl">{feedback?.className}</h2>
               <p>Instructor: {feedback?.name}</p>
-              <p className="mt-6">"{feedback?.feedback}"</p>
+              <p className="mt-6">{feedback?.feedback}</p>
 
               <div className="my-4">
                 <Rate allowHalf disabled defaultValue={feedback?.rate} />
