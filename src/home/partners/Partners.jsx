@@ -18,7 +18,7 @@ import vSphere from "../../assets/partners/vSphere.png";
 
 const Partners = () => {
   return (
-    <div className="flex flex-col px-2 gap-10 ">
+    <div className="flex flex-col px-5 md:px-2 gap-10 ">
       <SectionTitle
         title="Our Partners"
         subtitle="Proud to be Supported by Industry Leaders"
