@@ -15,7 +15,7 @@ const ContactUs = () => {
                 }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center flex flex-col md:flex-row">
-                    <div className="bg-[#f5ebd3] flex rounded-lg flex-col justify-between">
+                    <div className="bg-[#f5ebd3] w-[372px] md:w-auto flex rounded-lg flex-col justify-between">
                         <div className="md:pr-32 pl-5 py-5 text-left">
                             <h1 className="mb-5 text-4xl font-bold">Call now for any need!</h1>
                             <p className="mb-5">
@@ -27,10 +27,10 @@ const ContactUs = () => {
                     </div>
                     <div className="flex flex-col justify-between items-center space-y-2">
                         <div className="bg-[#ffcdcc] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  rounded-lg">
-                            <div className="justify-start text-left">
+                            <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" className="justify-start text-left">
                                 <p className="text-xl font-bold">Free Video Library</p>
                                 <button className="btn bg-[#ffedf9] text-red-400">Watch Video</button>
-                            </div>
+                            </a>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48">
                                     <path fill="#FF3D00" d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"></path><path fill="#FFF" d="M20 31L20 17 32 24z"></path>

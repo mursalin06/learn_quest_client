@@ -8,12 +8,10 @@ import { IoLogOut } from "react-icons/io5";
 import useAllUsers from "../hooks/useAllUsers";
 
 const Navbar = () => {
-
     const { user, logOut } = useContext(AuthContext);
     const [usersArr, refetch] = useAllUsers();
     const getUserData = usersArr.find((loggedUser) => user?.email === loggedUser.email);
     const userRole = getUserData?.role;
-    // console.log(userRole);
 
     const links = (
         <>
@@ -26,6 +24,24 @@ const Navbar = () => {
             <NavLink to="/teach-on-lq" className="nav-link px-4 py-2">
                 Teach on LearnQuest
             </NavLink>
+
+            {/* Show Dashboard only if user is logged in */}
+            {user && (
+                <NavLink
+                    to={
+                        userRole === "admin"
+                            ? "/dashboard/teacher-requests"
+                            : userRole === "teacher"
+                                ? "/dashboard/add-class"
+                                : userRole === "student"
+                                    ? "/dashboard/my-enroll-class"
+                                    : "/dashboard"
+                    }
+                    className="nav-link px-4 py-2"
+                >
+                    <li>Dashboard</li>
+                </NavLink>
+            )}
         </>
     );
 
@@ -87,6 +103,9 @@ const Navbar = () => {
 
             {/* Avatar */}
             <div className="navbar-end">
+            <div className="mr-3">
+                    { user && (<button onClick={handleSignOut} className=" btn btn-error btn-sm text-white"><IoLogOut></IoLogOut> Log Out</button>)}
+                </div>
                 {user ? (
                     <div className="dropdown dropdown-end flex justify-center items-center gap-3 z-10">
 
@@ -104,7 +123,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="dropdown-content menu pl-6 py-6 space-y-5 shadow bg-base-100 rounded-box w-56">
                                 <p aria-readonly className="font-medium flex items-center gap-2"><FaUser></FaUser>{user?.displayName}</p>
-                                <NavLink
+                                {/* <NavLink
                                     to={
                                         userRole === "admin"
                                             ? "/dashboard/teacher-requests"
@@ -117,10 +136,10 @@ const Navbar = () => {
                                     // to="/dashboard/add-class" 
                                     className="nav-link w-fit">
                                     <li>Dashboard</li>
-                                </NavLink>
-                                <div>
+                                </NavLink> */}
+                                {/* <div>
                                     <button onClick={handleSignOut} className=" btn btn-error btn-sm text-white"><IoLogOut></IoLogOut> Log Out</button>
-                                </div>
+                                </div> */}
                             </ul>
                         </div>
 
