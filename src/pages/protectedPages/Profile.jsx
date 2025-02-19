@@ -19,7 +19,7 @@ const Profile = () => {
     // console.log(userData);
     return (
         <div className="flex justify-center items-center min-h-screen">
-            <div className="md:w-96 border flex flex-col justify-center items-center  ">
+            <div className="md:w-96 flex flex-col justify-center items-center  ">
                 <div className="bg-[#825afa] rounded-t-xl w-full py-8 text-center">
                     <div className="avatar">
                         <div className="mask mask-squircle w-28">
@@ -33,6 +33,8 @@ const Profile = () => {
                     <p><span className="text-md font-bold">Role:</span> <span>{userData?.role}</span> </p>
                     <p><span className="text-md font-bold">Email:</span> <span>{userData?.email}</span> </p>
                     <p><span className="text-md font-bold">Number:</span> <span> 01322810867</span> </p>
+                    <p><span className="text-md font-bold">Joined at:</span> <span> {userData.createdAt}</span></p>
+                    <p><span className="text-md font-bold">Location:</span> <span> N/A</span> </p>
                 </div>
             </div>
         </div>

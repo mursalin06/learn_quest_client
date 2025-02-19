@@ -10,7 +10,7 @@ import signInImg from '../assets/images/signIn.png';
 
 const Login = () => {
     const { login, googleSignIn, setUser } = useContext(AuthContext);
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
@@ -49,6 +49,17 @@ const Login = () => {
             });
     };
 
+    // Autofill function for login credentials
+    const fillCredentials = (role) => {
+        const credentials = {
+            student: { email: "jen@gmail.com", password: "Aa!112" },
+            teacher: { email: "sabrina@gmail.com", password: "Aa!112" },
+            admin: { email: "joy@crookes.com", password: "Aa!112" },
+        };
+        setValue("email", credentials[role].email);
+        setValue("password", credentials[role].password);
+    };
+
     return (
         <section>
             <nav className="sticky z-50 top-0 w-full bg-white">
@@ -65,6 +76,23 @@ const Login = () => {
                 <div className="w-full md:w-1/2 flex justify-center">
                     <div className="card bg-base-100 w-full mx-5 md:w-3/4 shadow-2xl">
                         <h2 className="text-2xl font-bold text-center pt-6">Sign In</h2>
+
+                        {/* Login Credentials Section */}
+                        <div className="text-center mt-4">
+                            <h3 className="text-lg font-semibold">Login Credentials</h3>
+                            <div className="flex justify-center gap-2 mt-2">
+                                <button onClick={() => fillCredentials("student")} className="btn btn-sm bg-blue-600 text-white">
+                                    Student
+                                </button>
+                                <button onClick={() => fillCredentials("teacher")} className="btn btn-sm bg-green-600 text-white">
+                                    Teacher
+                                </button>
+                                <button onClick={() => fillCredentials("admin")} className="btn btn-sm bg-red-600 text-white">
+                                    Admin
+                                </button>
+                            </div>
+                        </div>
+
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">

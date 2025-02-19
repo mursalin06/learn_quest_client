@@ -5,6 +5,7 @@ import useAllUsers from "../hooks/useAllUsers";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import "./dashboard.css";
+import { FaHouseChimneyUser, FaHouseMedical } from "react-icons/fa6";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -100,6 +101,18 @@ const Dashboard = () => {
                 <li className="text-white">Profile</li>
               </NavLink>
             </ul>
+          <div className="mx-2">
+            <p className="font-bold text-center bg-gray-50 text-xs my-3 rounded-full">Navigation</p>
+            <NavLink to="/" className="sidebar-link ">
+              <p className="text-white text-sm"> Home</p>
+            </NavLink>
+            <NavLink to="/all-classes" className="sidebar-link ">
+              <p className="text-white text-sm"> All Classes</p>
+            </NavLink>
+            <NavLink to="/teach-on-lq" className="sidebar-link ">
+              <p className="text-white text-sm"> Teach On LQ</p>
+            </NavLink>
+          </div>
           </div>
         </div>
         <div className="bg-base-100 w-full">

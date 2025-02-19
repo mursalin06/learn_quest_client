@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../components/Loading";
 import SectionTitle from "../../../components/SectionTitle";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 
 const MyEnrollClass = () => {
   const { user } = useAuth();
@@ -22,7 +22,7 @@ const MyEnrollClass = () => {
   }
 
   return (
-    <div className="px-4">
+    <div className="">
       <SectionTitle title="My Enrolled Classes" />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-4 grid-cols-1 gap-2">

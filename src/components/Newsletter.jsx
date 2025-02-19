@@ -15,7 +15,7 @@ const Newsletter = () => {
 
     return (
         <section className='pt-12 pb-24 px-3'>
-            <div className='flex flex-col justify-center items-center border rounded-lg border-[#825afa] md:w-1/2 w-11/12 mx-auto py-16 space-y-5 text-center'>
+            <div className='flex flex-col justify-center items-center border border-[#825afa] md:w-1/2 w-11/12 mx-auto py-16 space-y-5 text-center'>
                 <img src={mailIcon} alt="Email Icon" />
                 <h2 className="text-2xl font-bold md:text-4xl">Subscribe to our Newsletter</h2>
                 <p>Your Weekly Dose of LearnQuest Insights</p>
@@ -31,8 +31,8 @@ const Newsletter = () => {
                 {/* Desktop form */}
                 <div className='hidden md:block'>
                     <form onSubmit={handleSubmit} className="join">
-                        <input type="email" required className="input input-bordered join-item" placeholder="Enter your Email" />
-                        <button type="submit" className="btn bg-[#825afa] text-white join-item">Subscribe</button>
+                        <input type="email" required className="input input-bordered rounded-none join-item" placeholder="Enter your Email" />
+                        <button type="submit" className="btn bg-[#825afa] text-white rounded-none join-item">Subscribe</button>
                     </form>
                 </div>
             </div>

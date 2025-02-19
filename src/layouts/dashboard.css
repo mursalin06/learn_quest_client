@@ -14,9 +14,14 @@
 }
 
 .sidebar-link:hover {
-    background-color: #a710ff;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
     text-decoration: none;
 }
+
 .sidebar-link li {
     margin: 0;
     padding: 0;

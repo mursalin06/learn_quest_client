@@ -50,7 +50,7 @@ const AllUsers = () => {
         ALL USERS - {usersArr.length}
       </h3>
 
-      <form onSubmit={handleSearch} className="join">
+      <form onSubmit={handleSearch} className="join mx-4">
         <label className="input input-bordered flex items-center gap-2 max-w-60 join-item">
           <input
             name="search"

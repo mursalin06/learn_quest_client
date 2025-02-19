@@ -15,7 +15,7 @@ const ContactUs = () => {
                 }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center flex flex-col md:flex-row">
-                    <div className="bg-[#f5ebd3] w-[372px] md:w-auto flex rounded-lg flex-col justify-between">
+                    <div className="bg-[#f5ebd3] w-[372px] md:w-auto flex flex-col justify-between">
                         <div className="md:pr-32 pl-5 py-5 text-left">
                             <h1 className="mb-5 text-4xl font-bold">Call now for any need!</h1>
                             <p className="mb-5">
@@ -26,7 +26,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-between items-center space-y-2">
-                        <div className="bg-[#ffcdcc] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  rounded-lg">
+                        <div className="bg-[#ffcdcc] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  ">
                             <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" className="justify-start text-left">
                                 <p className="text-xl font-bold">Free Video Library</p>
                                 <button className="btn bg-[#ffedf9] text-red-400">Watch Video</button>
@@ -37,7 +37,7 @@ const ContactUs = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="bg-[#c9e1ff] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center  rounded-lg">
+                        <div className="bg-[#c9e1ff] text-black h-[120px] w-full md:w-[500px] px-5 flex justify-between items-center">
                             <div className="justify-start text-left">
                                 <p className="text-xl font-bold">Learn Quest Facebook Group</p>
                                 <button className="btn text-blue-400 bg-[#ffedf9]">Join our Group</button>
