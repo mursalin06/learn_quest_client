@@ -18,11 +18,13 @@ const ClassDetails = () => {
         <Navbar></Navbar>
       </nav>
       <section className="min-h-screen mb-12">
+        <div className="max-w-[865px] mx-auto">
         <SectionTitle title={`Details about ${title}`}></SectionTitle>
+        </div>
         {/*  */}
         <div className="card card-compact bg-base-100 shadow-xl md:w-1/2 mx-auto mt-12">
           <figure>
-            <img className=" w-full" src={image} />
+            <img className=" w-full md:h-[500px]" src={image} />
           </figure>
           <div className="card-body">
             <h2 className="card-title md:text-2xl">{title}</h2>

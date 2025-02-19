@@ -103,8 +103,8 @@ const Navbar = () => {
 
             {/* Avatar */}
             <div className="navbar-end">
-            <div className="mr-3">
-                    { user && (<button onClick={handleSignOut} className=" btn btn-error btn-sm text-white"><IoLogOut></IoLogOut> Log Out</button>)}
+            <div className="mr-1 md:mr-3">
+                    { user && (<button onClick={handleSignOut} className=" btn btn-error btn-xs md:btn-sm text-white"><IoLogOut></IoLogOut> Log Out</button>)}
                 </div>
                 {user ? (
                     <div className="dropdown dropdown-end flex justify-center items-center gap-3 z-10">
